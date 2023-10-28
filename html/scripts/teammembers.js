@@ -1,29 +1,29 @@
 "use strict";
-const blogs = [
+const members = [
     {
         title: "Jason Jelincic",
         date: "10/22/23",
         description: "Second Year Computer Science Student",
-        slug: "blog1"
+        slug: "member1"
     },
     {
         title: "Logan Barker",
         date: "10/23/23",
         description: "Second Year Computer Science Student",
-        slug: "blog2"
+        slug: "member2"
     },
     {
         title: "Alon Evron",
         date: "10/23/23",
         description: "Second Year Computer Science Student",
-        slug: "blog3"
+        slug: "member3"
     }
 ];
-function getBlog() {
-    const blogList = document.getElementById("blog-list");
-    blogs.forEach(({ slug, title, date, description }) => {
+function getMemeber() {
+    const memberList = document.getElementById("member-list");
+    members.forEach(({ slug, title, date, description }) => {
         const link = document.createElement("a");
-        link.href = `blogs/${slug}.html`;
+        link.href = `teammembers/${slug}.html`;
         link.innerHTML = "Read More";
         const postPreview = document.createElement("div");
         postPreview.classList.add("post");
@@ -34,9 +34,9 @@ function getBlog() {
     </div>
     <p class="post-description">${description}</p>`;
         postPreview.appendChild(link);
-        if (blogList) {
-            blogList.appendChild(postPreview);
+        if (memberList) {
+            memberList.appendChild(postPreview);
         }
     });
 }
-getBlog();
+getMemeber();

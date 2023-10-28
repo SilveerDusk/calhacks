@@ -8,19 +8,19 @@ type TeamMember = {
 const members: TeamMember[] = [
   {
     title: "Jason Jelincic",
-    linkenIn: "https://www.linkedin.com/in/jasonjelincic/",
+    linkenIn: "jasonjelincic/",
     description: "Second Year Computer Science Student",
     slug: "member1"
   },
   {
     title: "Logan Barker",
-    linkenIn: "https://www.linkedin.com/in/logan-barker-aa1980293/",
+    linkenIn: "logan-barker-aa1980293/",
     description: "Second Year Computer Science Student",
     slug: "member2"
   },
   {
     title: "Alon Evron",
-    linkenIn: "https://www.linkedin.com/in/alon-evron/",
+    linkenIn: "alon-evron/",
     description: "Second Year Computer Science Student",
     slug: "member3"
   }
@@ -38,7 +38,7 @@ function getMemeber() {
     postPreview.innerHTML = `
     <div class="top">
     <h2 class="post-title">${title}</h2>
-    <h3 class="post-subtitle"><a href="${linkenIn}">LinkedIn Profile</a></h3>
+    <h3 class="post-subtitle"><a href="https://www.linkedin.com/in/${linkenIn}">LinkedIn Profile</a></h3>
     </div>
     <p class="post-description">${description}</p>`;
 

@@ -1,6 +1,6 @@
 type TeamMember = {
   title: string;
-  date: string;
+  linkenIn: string;
   description: string;
   slug: string;
 }
@@ -8,19 +8,19 @@ type TeamMember = {
 const members: TeamMember[] = [
   {
     title: "Jason Jelincic",
-    date: "10/22/23",
+    linkenIn: "https://www.linkedin.com/in/jasonjelincic/",
     description: "Second Year Computer Science Student",
     slug: "member1"
   },
   {
     title: "Logan Barker",
-    date: "10/23/23",
+    linkenIn: "https://www.linkedin.com/in/logan-barker-aa1980293/",
     description: "Second Year Computer Science Student",
     slug: "member2"
   },
   {
     title: "Alon Evron",
-    date: "10/23/23",
+    linkenIn: "https://www.linkedin.com/in/alon-evron/",
     description: "Second Year Computer Science Student",
     slug: "member3"
   }
@@ -29,7 +29,7 @@ const members: TeamMember[] = [
 function getMemeber() {
   const memberList = document.getElementById("member-list");
 
-  members.forEach(({slug, title, date, description}) => {
+  members.forEach(({slug, title, linkenIn, description}) => {
     const link =  document.createElement("a");
     link.href = `teammembers/${slug}.html`;
     link.innerHTML = "Read More";
@@ -38,7 +38,7 @@ function getMemeber() {
     postPreview.innerHTML = `
     <div class="top">
     <h2 class="post-title">${title}</h2>
-    <h3 class="post-subtitle">${date}</h3>
+    <h3 class="post-subtitle">$<a href={linkenIn}>Connect</a></h3>
     </div>
     <p class="post-description">${description}</p>`;
 

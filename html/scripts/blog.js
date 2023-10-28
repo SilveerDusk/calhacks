@@ -1,15 +1,15 @@
 "use strict";
 const blogs = [
     {
-        title: "Dinner Date with Xavier",
+        title: "Jason Jelincic",
         date: "10/22/23",
-        description: "Over the Summer I had a Fun Day Chefing with My Bestie",
+        description: "Second Year Computer Science Student",
         slug: "blog2"
     },
     {
-        title: "My Cats",
+        title: "Logan Barker",
         date: "10/23/23",
-        description: "Meet My Cats Investigating My Bagel",
+        description: "Second Year Computer Science Student",
         slug: "blog1"
     }
 ];

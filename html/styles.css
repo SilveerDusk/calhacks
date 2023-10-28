@@ -18,7 +18,7 @@ main{
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  background-color: #03055ed4;
+  background-color: black;
 }
 .logo a{
   display: block;
@@ -46,7 +46,7 @@ main{
   align-items: center;
   margin: 10px;
   padding: 5px;
-  background: linear-gradient(45deg, #023E8A, #0096C7);
+  background: linear-gradient(45deg, black, grey);
   background-repeat: no-repeat;
   background-attachment: fixed;
   border-radius: 20px;
@@ -167,7 +167,7 @@ footer{
   align-items: center;
   margin: 10px;
   padding: 5px;
-  background: linear-gradient(115deg, #023E8A, #0096C7);
+  background: linear-gradient(115deg, black, grey);
   background-repeat: no-repeat;
   background-attachment: fixed;
   border-radius: 20px;

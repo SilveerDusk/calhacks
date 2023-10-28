@@ -22,9 +22,6 @@ const members = [
 function getMemeber() {
     const memberList = document.getElementById("member-list");
     members.forEach(({ slug, title, linkenIn, description }) => {
-        const link = document.createElement("a");
-        link.href = `teammembers/${slug}.html`;
-        link.innerHTML = "Read More";
         const postPreview = document.createElement("div");
         postPreview.classList.add("post");
         postPreview.innerHTML = `
@@ -33,7 +30,6 @@ function getMemeber() {
     <h3 class="post-subtitle"><a href="https://www.linkedin.com/in/${linkenIn}">LinkedIn Profile</a></h3>
     </div>
     <p class="post-description">${description}</p>`;
-        postPreview.appendChild(link);
         if (memberList) {
             memberList.appendChild(postPreview);
         }

@@ -1,6 +1,6 @@
 /* Body */
 body{
-  background: linear-gradient(135deg, #0077B6, #48CAE4);
+  background: linear-gradient(135deg, rgb(93, 90, 90), black);
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100%;

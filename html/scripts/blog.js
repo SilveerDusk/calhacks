@@ -4,13 +4,19 @@ const blogs = [
         title: "Jason Jelincic",
         date: "10/22/23",
         description: "Second Year Computer Science Student",
-        slug: "blog2"
+        slug: "blog1"
     },
     {
         title: "Logan Barker",
         date: "10/23/23",
         description: "Second Year Computer Science Student",
-        slug: "blog1"
+        slug: "blog2"
+    },
+    {
+        title: "Alon Evron",
+        date: "10/23/23",
+        description: "Second Year Computer Science Student",
+        slug: "blog3"
     }
 ];
 function getBlog() {

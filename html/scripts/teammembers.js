@@ -30,7 +30,7 @@ function getMemeber() {
         postPreview.innerHTML = `
     <div class="top">
     <h2 class="post-title">${title}</h2>
-    <h3 class="post-subtitle">$<a href={linkenIn}>Connect</a></h3>
+    <h3 class="post-subtitle"><a href={linkenIn}>LinkedIn Profile</a></h3>
     </div>
     <p class="post-description">${description}</p>`;
         postPreview.appendChild(link);

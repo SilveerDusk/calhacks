@@ -1,4 +1,8 @@
 import reflex as rx
+from transformers import AutoProcessor, AutoModelForSpeechSeq2Seq
+
+processor = AutoProcessor.from_pretrained("openai/whisper-large-v2")
+model = AutoModelForSpeechSeq2Seq.from_pretrained("openai/whisper-large-v2")
 
 from webui import styles
 from webui.components import loading_icon
@@ -86,7 +90,7 @@ def action_bar() -> rx.Component:
                 width="100%",
             ),
             rx.text(
-                "ReflexGPT may return factually incorrect or misleading responses. Use discretion.",
+                "AIfred may return factually incorrect or misleading responses. Use discretion.",
                 font_size="xs",
                 color="#fff6",
                 text_align="center",

@@ -1,5 +1,5 @@
 import reflex as rx
-from transformers import AutoProcessor, AutoModelForSpeechSeq2Seq
+from transformers import AutoProcessor, AutoModelForSpeechSeq2Seq, WhisperProcessor, WhisperForConditionalGeneration
 
 processor = AutoProcessor.from_pretrained("openai/whisper-large-v2")
 model = AutoModelForSpeechSeq2Seq.from_pretrained("openai/whisper-large-v2")

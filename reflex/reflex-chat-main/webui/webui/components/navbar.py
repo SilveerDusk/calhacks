@@ -26,11 +26,15 @@ def navbar():
                 ),
                 rx.breadcrumb(
                     rx.breadcrumb_item(
-                        rx.heading("AIFred", size="sm"),
+                        rx.breadcrumb_link("Home", href="/")
+                    ),
+                    rx.breadcrumb_item(
+                        rx.breadcrumb_link("AIFred", href="AIFred")
                     ),
                     rx.breadcrumb_item(
                         rx.text(State.current_chat, size="sm", font_weight="normal"),
                     ),
+                    
                 ),
             ),
             rx.hstack(

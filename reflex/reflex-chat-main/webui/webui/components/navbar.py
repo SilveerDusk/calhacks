@@ -26,7 +26,7 @@ def navbar():
                 ),
                 rx.breadcrumb(
                     rx.breadcrumb_item(
-                        rx.heading("ReflexGPT", size="sm"),
+                        rx.heading("AIFred", size="sm"),
                     ),
                     rx.breadcrumb_item(
                         rx.text(State.current_chat, size="sm", font_weight="normal"),

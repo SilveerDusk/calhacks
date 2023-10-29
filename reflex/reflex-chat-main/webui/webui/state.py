@@ -107,7 +107,7 @@ class State(rx.State):
 
         # Build the messages.
         messages = [
-            {"role": "system", "content": "You are a friendly chatbot named Reflex."}
+            {"role": "system", "content": "You are a friendly chatbot named AIfred."}
         ]
         for qa in self.chats[self.current_chat]:
             messages.append({"role": "user", "content": qa.question})

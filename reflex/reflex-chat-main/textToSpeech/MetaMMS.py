@@ -1,27 +1,23 @@
 
-from transformers import AutoProcessor, AutoModel, pipeline
-import scipy
+from bark import SAMPLE_RATE, generate_audio, preload_models
+from IPython.display import Audio
+from scipy.io.wavfile import write as write_wav
+import subprocess
 
-synthesiser = pipeline("text-to-speech", "suno/bark-small")
+# download and load all models
+#preload_models()
 
-speech = synthesiser("Hello, my dog is cooler than you!", forward_params={"do_sample": True})
-
-scipy.io.wavfile.write("bark_out.wav", rate=speech["sampling_rate"], data=speech["audio"])
-
-
-
-processor = AutoProcessor.from_pretrained("suno/bark-small")
-model = AutoModel.from_pretrained("suno/bark-small")
-
-inputs = processor(
-    text=["Hello"],
-    return_tensors="pt",
-)
+# generate audio from text
+text_prompt = """
+     Hello, my name is Suno. And, uh — and I like pizza. [laughs] 
+     But I also have other interests such as playing tic tac toe.
+"""
+audio_array = generate_audio(text_prompt)
 
 
+write_wav("reflex/reflex-chat-main/textToSpeech/audio.wav", SAMPLE_RATE, audio_array)
 
-speech_values = model.generate(**inputs, do_sample=True)
 
-sampling_rate = model.config.sample_rate
-scipy.io.wavfile.write("bark_out.wav", rate=sampling_rate, data=speech_values.cpu().numpy().squeeze())
+audio_file = "reflex/reflex-chat-main/textToSpeech/audio.wav"
+return_code = subprocess.call(["afplay", audio_file])
 

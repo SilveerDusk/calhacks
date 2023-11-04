@@ -1,9 +1,4 @@
 import reflex as rx
-from transformers import AutoProcessor, AutoModelForSpeechSeq2Seq, WhisperProcessor, WhisperForConditionalGeneration
-
-processor = AutoProcessor.from_pretrained("openai/whisper-large-v2")
-model = AutoModelForSpeechSeq2Seq.from_pretrained("openai/whisper-large-v2")
-
 from webui import styles
 from webui.components import loading_icon
 from webui.state import QA, State

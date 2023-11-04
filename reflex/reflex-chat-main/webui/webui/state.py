@@ -1,4 +1,9 @@
-import os
+import os, pyaudio, time, wave, librosa
+from transformers import AutoProcessor, AutoModelForSpeechSeq2Seq, WhisperProcessor, WhisperForConditionalGeneration
+
+from bark import generate_audio
+from scipy.io.wavfile import write as write_wav
+import subprocess
 
 import openai
 import reflex as rx
@@ -92,12 +97,50 @@ class State(rx.State):
         Args:
             form_data: A dict with the current question.
         """
+
+        audio = pyaudio.PyAudio()
+        stream = audio.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=1024)
+        frames = []
+        tend = time.time() + 13
+        while time.time() < tend:
+            data=stream.read(1024)
+            frames.append(data)
+        stream.stop_stream()
+        stream.close()
+        audio.terminate()
+
+        sound_file = wave.open("inputAudio.wav", "wb")
+        sound_file.setnchannels(1)
+        sound_file.setsampwidth(audio.get_sample_size(pyaudio.paInt16))
+        sound_file.setframerate(16000)
+        sound_file.writeframes(b''.join(frames))
+        sound_file.close()
+
+        processor = AutoProcessor.from_pretrained("openai/whisper-large-v2")
+        model = AutoModelForSpeechSeq2Seq.from_pretrained("openai/whisper-large-v2")
+
+        # load model and processor
+        processor = WhisperProcessor.from_pretrained("openai/whisper-large-v2")
+        model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v2")
+        model.config.forced_decoder_ids = None
+
+        # load dummy dataset and read audio files
+        audio = librosa.load("inputAudio.wav", sr=16000)
+        input_features = processor(audio[0], sampling_rate=16000, return_tensors="pt").input_features 
+
+        # generate token ids
+        predicted_ids = model.generate(input_features)
+        # decode token ids to text
+        transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)
+        with open("transcription.txt", "w") as f:
+            f.write(transcription[0])
+
         # Check if the question is empty
-        if self.question == "":
+        if transcription[0] == "":
             return
 
         # Add the question to the list of questions.
-        qa = QA(question=self.question, answer="")
+        qa = QA(question=transcription[0], answer="")
         self.chats[self.current_chat].append(qa)
 
         # Clear the input and start the processing.
@@ -132,4 +175,10 @@ class State(rx.State):
                 yield
 
         # Toggle the processing flag.
+        audio_array = generate_audio(self.chats[self.current_chat][-1].answer)
+        write_wav("audio.wav", 16000, audio_array)
+
+        audio_file = "audio.wav"
+        subprocess.call(["afplay", audio_file])
+        
         self.processing = False
